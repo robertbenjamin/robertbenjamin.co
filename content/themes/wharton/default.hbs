@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+
+    {{! Page Meta }}
+    <meta charset="UTF-8" />
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="{{asset "/favicon.ico"}}">
+
+    {{! Styles'n'Scripts }}
+    <link href="//fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic%7CLato:900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" id="lt-ie9-css"  href="{{asset "css/ie.css"}}" type="text/css" media="screen" />
+    <![endif]-->
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{>analytics }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+	<div class="wrap animated fadeIn">
+
+		<header class="header">
+
+			<div class="logo">
+
+			{{#if @blog.logo}}
+				<a id="blog-logo" href="{{@blog.url}}"><img id="logo" src="{{@blog.logo}}" alt="{{@blog.title}} Logo" /></a>
+			{{else}}
+				<div class="blog-title"><a href="{{@blog.url}}">{{@blog.title}}</a></div>
+				<div class="blog-tagline"><a href="{{@blog.description}}">{{@blog.description}}</a></div>
+			{{/if}}
+
+			</div>
+
+			<a id="menu-control" href="#nav" title="Menu">Menu</a>
+
+		</header>
+
+		{{>navigation }}
+
+
+    {{! Everything else gets inserted here }}
+    {{{body}}}
+
+    <footer class="footer">
+        <div class="wrapper">
+        	{{>footer }}
+        </div>
+    </footer>
+
+
+ </div>{{! wrap close }}
+
+
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+
+    {{! The main JavaScript files }}
+    <script src="{{asset "js/plugins.min.js"}}"></script>
+    <script src="{{asset "js/scripts.min.js"}}"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
+    <script>
+    	jQuery(function() {
+    	    WebFont.load({
+    	        custom: {
+    	            families: ['LeagueGothicRegular'], // font-family name
+    	            urls : ['{{@blog.url}}/assets/webfonts/leaguegothic.css'] // URL to css
+    	        },
+    	        active: function() {
+    	            jQuery('.slab h1').slabText({  "viewportBreakpoint":300 });
+    	        }
+    	    });
+    	});
+
+    	var siteUrl = '{{@blog.url}}';
+
+    </script>
+
+</body>
+</html>

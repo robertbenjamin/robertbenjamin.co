@@ -1,0 +1,77 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+
+<section class="main single-post">
+
+		<article class="{{post_class}}" id="post-6">
+
+		{{! Everything inside the #post tags pulls data from the post }}
+		{{#post}}
+
+
+			 	<div class="lead">
+
+			 		<h1 class="entry-title post-title">{{{title}}}</h1>
+
+			 		<ul class="meta top">
+			 			<li class="time">
+			 				<time class="post-date updated" datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM D, YYYY"}}</time>
+			 			</li>
+			 		</ul>
+
+					<div class="share">
+						<a class="social twitter white" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"
+						    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						    Twitter
+						</a>
+						<a class="social pinterest white" href="http://pinterest.com/pin/create/button/?url={{url absolute="true"}}"
+						    onclick="window.open(this.href, 'pinterest-share','width=580,height=296');return false;">
+						    Pinterest
+						</a>
+						<a class="social facebook white" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+						    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						    Facebook
+						</a>
+						<a class="social googleplus white" href="https://plus.google.com/share?url={{url absolute="true"}}"
+						   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+						    Google+
+						</a>
+					</div>
+
+					<div class="lead-image{{#if image}} post-image-support{{/if}}" style="{{#if @blog.cover}}background-image: url({{@blog.cover}});{{/if}}{{#if image}} background-image: url({{image}});{{/if}}"></div>
+
+				</div>
+
+
+				<div class="z-wrap">
+					<div class="wrapper">
+
+
+						<div class="inner post-inner">
+
+				            {{content}}
+
+			            {{#if tags}}
+				            <div class="meta bottom">
+				            	Saved: {{tags separator=", "}}
+				        	</div>
+			            {{/if}}
+
+
+
+
+			        	</div>
+
+			        {{/post}}
+
+
+
+			        	</div>
+			        </div>{{! close z-wrap and wrapper}}
+
+			    </article>
+
+</section>

@@ -1,0 +1,12 @@
+<div class="pagination p-archive">
+	<div class="newer-posts"><span class="next-post">
+    {{#if prev}}
+        <a href="{{page_url prev}}">Newer Posts &rarr;</a>
+    {{/if}}
+    </span></div>
+    <div class="older-posts"><span class="prev-post">
+    {{#if next}}
+        <a href="{{page_url next}}">&larr; Older Posts</a>
+    {{/if}}
+    </span></div>
+</div>
