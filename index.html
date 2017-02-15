@@ -25,7 +25,7 @@
 <body>
   <main>
     <h1>Robert Benjamin</h1>
-    <img src='img/shoes.jpg' alt='A unnecessary picture.'>
+    <pre id='donut' onmouseenter='runAnim()' onmouseleave='runAnim()'></pre>
     <div class='links'>
       <a href='https://blog.robertbenjamin.co'>Blog</a> •
       <a href='https://books.surge.sh/'>Books</a> •
@@ -37,5 +37,16 @@
     <p class='email-paragraph'>Or email me at — <a href='mailto:rotberj@gmail.com?Subject=Hey!' class='email-link'>rotberj@gmail.com</a></p>
   </main>
 </body>
+
+<script>
+runAnim = function() {
+  var isChrome = !!window.chrome && !!window.chrome.webstore;
+  if (isChrome) donut();
+};
+
+// Props to Andy Sloane for this donut animation
+// https://www.a1k0n.net/2006/09/15/obfuscated-c-donut.html
+!function(){var a=document.getElementById("donut"),b=function(){var b=void 0,c=1,d=1,e=function(){var b=[],e=[];c+=.07,d+=.03;for(var f=Math.cos(c),g=Math.sin(c),h=Math.cos(d),j=Math.sin(d),k=0;k<1760;k++)b[k]=k%80==79?"\n":" ",e[k]=0;for(var l=0;l<6.28;l+=.07){var m=Math.cos(l),n=Math.sin(l);for(i=0;i<6.28;i+=.02){var o=Math.sin(i),p=Math.cos(i),q=m+2,r=1/(o*q*g+n*f+5),s=o*q*f-n*g,t=0|40+30*r*(p*q*h-s*j),u=0|12+15*r*(p*q*j+s*h),v=t+80*u,w=0|8*((n*g-o*m*f)*h-o*m*g-n*f-p*m*j);u<22&&u>=0&&t>=0&&t<79&&r>e[v]&&(e[v]=r,b[v]=".,-~:;=!*#$@"[w>0?w:0])}}a.innerHTML=b.join("")};window.donut=function(){void 0===b?(a.style.filter="blur(8px)",b=setInterval(e,50)):(a.innerHTML="",a.style.filter="",clearInterval(b),b=void 0)}};document.all?window.attachEvent("onload",b):window.addEventListener("load",b,!1)}();
+</script>
 
 </html>
